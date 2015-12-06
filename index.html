@@ -1,0 +1,27 @@
+<html ng-app="News">
+<head>
+  <title>Reddit clone</title>
+</head>
+
+<body>
+<script type="text/javascript" src="/home/link/libs/web/node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="app.js"> </script>
+<div ng-controller="MainCtrl as main">
+  {{Main.test}}
+  <div ng-repeat="post in main.posts | orderBy: '-upvotes'">
+    <span ng-click="main.upvotePost(post)">^</span>
+    <a ng-show="post.link" href="{{post.link}}">
+      {{post.title}}
+    </a>
+    <span ng-hide="post.link">{{post.title}}</span>
+    - {{post.upvotes}}
+  </div>
+  <form ng-submit="main.addPost()">
+  <input type="text" placeholder="Title" ng-model="main.post.title"></input>
+  <br>
+  <input type="text" placeholder="Link" ng-model="main.post.link"></input>
+  <br>
+<button type="submit">Post</button>
+</form>
+</div>
+</body>
