@@ -1,4 +1,4 @@
-var app = angular.module("News",[]);
+var app = angular.module("News",['ui.router']);
 
 app.factory('posts',[function(){
   var o = {
