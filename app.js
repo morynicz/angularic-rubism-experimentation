@@ -8,8 +8,21 @@ app.factory('posts',[function(){
   return o;
 }]);
 
+app.config([
+  '$stateProvider',
+  '$urlRouterProvider',
+  function($stateProvider, $urlRouterProvider) {
+
+    $stateProvider.state('home', {
+        url: '/home',
+        templateUrl: '/home.html',
+        controller: 'MainCtrl as main'
+      });
+
+    $urlRouterProvider.otherwise('home');
+}]);
+
 app.controller("MainCtrl",['posts', function(posts){
-  this.test = "Testing";
   this.posts = posts.posts;
 
   this.addPost = function() {
