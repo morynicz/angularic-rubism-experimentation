@@ -7,7 +7,7 @@ angular.module('receta').config(['$routeProvider', function($routeProvider) {
     });
 }]);
 
-recipes = [
+var recipes = [
     {
 	id: 1,
 	name: 'Baked Potato w/ Cheese'
@@ -29,6 +29,7 @@ angular.module('controllers',[]);
 
 angular.module('controllers').controller('RecipeController',[ '$scope', '$routeParams', '$location',
 							      function($scope, $routeParams, $location) {
+								  var keywords;
 								  $scope.search = function(keywords) {
 								      $location.path("/").search('keywords',keywords);
 								  }
@@ -36,7 +37,7 @@ angular.module('controllers').controller('RecipeController',[ '$scope', '$routeP
 								  if ($routeParams.keywords) {
 								      keywords = $routeParams.keywords.toLowerCase();
 								      $scope.recipes = recipes.filter(function(recipe) {
-									  return recipe.name.toLowerCase().indexOf(keywords) != -1
+									  return recipe.name.toLowerCase().indexOf(keywords) !== -1
 								      });
 								  } else {
 								      $scope.recipes = [];
