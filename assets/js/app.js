@@ -13,7 +13,7 @@ angular.module('todoApp').config(['$routeProvider',
 	    })
 	}])
 
-angular.module('todoApp').controller('TodoCtrl, ['$scope, '$rootScope', 'TodoService',
+angular.module('todoApp').controller('TodoCtrl', ['$scope', '$rootScope', 'TodoService',
 				     function($scope, $rootScope, TodoService){
 
     $scope.formData = {};
