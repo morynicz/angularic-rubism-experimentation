@@ -27,8 +27,21 @@ recipes = [
 
 angular.module('controllers',[]);
 
-angular.module('controllers').controller('RecipeController',[ '$scope', function($scope){
-    
+angular.module('controllers').controller('RecipeController',[ '$scope', '$routeParams', '$location',
+							      function($scope, $routeParams, $location) {
+								  $scope.search = function(keywords) {
+								      $location.path("/").search('keywords',keywords);
+								  }
+
+								  if ($routeParams.keywords) {
+								      keywords = $routeParams.keywords.toLowerCase();
+								      $scope.recipes = recipes.filter(function(recipe) {
+									  return recipe.name.toLowerCase().indexOf(keywords) != -1
+								      });
+								  } else {
+								      $scope.recipes = [];
+								  }
+												
 }]);
 				
 			
