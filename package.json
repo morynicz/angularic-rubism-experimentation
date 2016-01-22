@@ -1,0 +1,25 @@
+{
+  "name": "receta",
+  "version": "1.0.0",
+  "description": "tutorial app",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morynicz/angularic-rubism-experimentation.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/morynicz/angularic-rubism-experimentation/issues"
+  },
+  "homepage": "https://github.com/morynicz/angularic-rubism-experimentation#readme",
+  "dependencies": {
+    "bower": "^1.7.2"
+  }
+}
