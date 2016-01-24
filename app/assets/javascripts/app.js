@@ -1,11 +1,18 @@
-angular.module('receta',['templates', 'ngRoute', 'controllers']);
+angular.module('receta',[
+  'templates',
+  'ngRoute',
+  'controllers'
+]);
 
-angular.module('receta').config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/',{
-    templateUrl: '_index.html',
-    controller: 'RecipesController'
-  });
-}]);
+angular.module('receta').config([
+  '$routeProvider',
+  function($routeProvider) {
+    $routeProvider.when('/',{
+      templateUrl: '_index.html',
+      controller: 'RecipesController'
+    });
+  }
+]);
 
 var recipes = [
   {
@@ -23,11 +30,15 @@ var recipes = [
   {
     id: 4,
     name: 'Baked Brussel Sprouts'
-  }];
+  }
+];
 
-  angular.module('controllers',[]);
+angular.module('controllers',[]);
 
-  angular.module('controllers').controller('RecipesController',[ '$scope', '$routeParams', '$location',
+angular.module('controllers').controller('RecipesController',[
+  '$scope',
+  '$routeParams',
+  '$location',
   function($scope, $routeParams, $location) {
     var keywords;
     $scope.search = function(keywords) {
@@ -43,4 +54,5 @@ var recipes = [
       $scope.recipes = [];
     }
 
-  }]);
+  }
+]);
