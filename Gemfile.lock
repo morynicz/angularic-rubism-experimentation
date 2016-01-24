@@ -165,7 +165,6 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    spring (1.6.2)
     sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -206,8 +205,8 @@ DEPENDENCIES
   foreman
   jbuilder (~> 2.0)
   jquery-rails
-  pg (~> 0.15)
-  rails (= 4.2.5)
+  pg
+  rails (~> 4.2.5)
   rails_12factor
   rails_serve_static_assets
   rails_stdout_logging
