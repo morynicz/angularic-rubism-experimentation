@@ -1,6 +1,7 @@
 angular.module('receta',[
   'templates',
   'ngRoute',
+  'ngResource',
   'controllers'
 ]);
 
@@ -33,22 +34,23 @@ var recipes = [
   }
 ];
 
-angular.module('controllers',[]);
+angular.module('controllers',['ngResource']);
 
 angular.module('controllers').controller('RecipesController',[
   '$scope',
   '$routeParams',
   '$location',
-  function($scope, $routeParams, $location) {
+  '$resource',
+  function($scope, $routeParams, $location, $resource) {
     var keywords;
     $scope.search = function(keywords) {
       $location.path("/").search('keywords',keywords);
+      var recipe = $resource('/recipes/:recipeId', {recipeId: "@id", format: "json"});
     }
 
     if ($routeParams.keywords) {
-      keywords = $routeParams.keywords.toLowerCase();
-      $scope.recipes = recipes.filter(function(recipe) {
-        return recipe.name.toLowerCase().indexOf(keywords) !== -1
+      recipe.query({ keywords: $routeParams.keywords}, function(result){
+        $scope.recipes = results;
       });
     } else {
       $scope.recipes = [];
