@@ -42,15 +42,16 @@ angular.module('controllers').controller('RecipesController',[
   '$location',
   '$resource',
   function($scope, $routeParams, $location, $resource) {
-    var keywords;
+    var recipe;
     $scope.search = function(keywords) {
       $location.path("/").search('keywords',keywords);
-      var recipe = $resource('/recipes/:recipeId', {recipeId: "@id", format: "json"});
     }
 
+    recipe = $resource('/recipes/:recipeId', {recipeId: "@id", format: "json"});
+
     if ($routeParams.keywords) {
-      recipe.query({ keywords: $routeParams.keywords}, function(result){
-        $scope.recipes = results;
+      return recipe.query({ keywords: $routeParams.keywords}, function(results){
+        return $scope.recipes = results;
       });
     } else {
       $scope.recipes = [];
