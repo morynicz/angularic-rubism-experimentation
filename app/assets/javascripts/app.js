@@ -11,6 +11,9 @@ angular.module('receta').config([
     $routeProvider.when('/',{
       templateUrl: '_index.html',
       controller: 'RecipesController'
+    }).when('/recipes/:recipeId', {
+      templateUrl: '_show.html',
+      controller: 'RecipeController'
     });
   }
 ]);
