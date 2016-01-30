@@ -3,6 +3,7 @@ describe('RecipeController', function(){
   var ctrl = null;
   var routeParams = null;
   var httpBackend = null;
+  var flash = null;
   var recipeId = 42;
 
   var fakeRecipe = {
@@ -15,12 +16,14 @@ describe('RecipeController', function(){
       $routeParams,
       $rootScope,
       $httpBackend,
-      $controller) {
+      $controller,
+      _flash_) {
         scope = $rootScope.$new();
         location = $location;
         httpBackend = $httpBackend;
         routeParams = $routeParams;
         routeParams.recipeId = recipeId;
+        flash = _flash_;
 
         var request = new RegExp("\/recipes/" + recipeId);
 
@@ -51,6 +54,7 @@ describe('RecipeController', function(){
         it('loads given recipe', function() {
           httpBackend.flush();
           expect(scope.recipe).toBe(null);
+          expect(flash.error).toBe("There is no recipe with ID "+ recipeId);
         });
       });
     });
