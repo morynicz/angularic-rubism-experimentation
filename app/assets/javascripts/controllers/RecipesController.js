@@ -12,12 +12,15 @@ angular.module('controllers').controller('RecipesController',[
     recipe = $resource('/recipes/:recipeId', {recipeId: "@id", format: "json"});
 
     if ($routeParams.keywords) {
-      return recipe.query({ keywords: $routeParams.keywords}, function(results){
+      recipe.query({ keywords: $routeParams.keywords}, function(results){
         return $scope.recipes = results;
       });
     } else {
       $scope.recipes = [];
     }
 
+    $scope.view = function(recipeId) {
+      return $location.path("/recipes/" + recipeId)
+    }
   }
 ]);
