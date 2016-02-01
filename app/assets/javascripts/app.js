@@ -20,8 +20,14 @@ angular.module('receta').config([
     $routeProvider.when('/',{
       templateUrl: '_index.html',
       controller: 'RecipesController'
+    }).when('/recipes/new', {
+      templateUrl: '_form.html',
+      controller:  'RecipeController'
     }).when('/recipes/:recipeId', {
       templateUrl: '_show.html',
+      controller: 'RecipeController'
+    }).when('/recipes/:recipeId/edit',{
+      templateUrl: '_form.html',
       controller: 'RecipeController'
     });
   }

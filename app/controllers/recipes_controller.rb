@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  skip_before_filter :verify_authencity_token
+  skip_before_filter :verify_authenticity_token
   def index
     @recipes = if params[:keywords]
                  Recipe.where('name ilike ?', "%#{params[:keywords]}%")
@@ -13,7 +13,6 @@ class RecipesController < ApplicationController
   end
 
   def create
-    puts 'create fired'
     @recipe = Recipe.new(params.require(:recipe).permit(:name, :instructions))
     @recipe.save
     render 'show', status: 201
@@ -26,6 +25,7 @@ class RecipesController < ApplicationController
   end
 
   def destroy
+    puts 'destroy?'
     recipe = Recipe.find(params[:id])
     recipe.destroy
     head :no_content
