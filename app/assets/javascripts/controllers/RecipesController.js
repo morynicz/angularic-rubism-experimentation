@@ -22,5 +22,13 @@ angular.module('controllers').controller('RecipesController',[
     $scope.view = function(recipeId) {
       return $location.path("/recipes/" + recipeId)
     }
+
+    $scope.newRecipe = function() {
+      $location.path("/recipes/new");
+    }
+
+    $scope.edit = function(recipeId) {
+      $location.path("/recipes" + recipeId + "/edit");
+    }
   }
 ]);
